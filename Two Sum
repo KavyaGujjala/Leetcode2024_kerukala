@@ -1,0 +1,17 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        #Bruteforce - O(n^2)
+        '''
+        for i in range(len(nums)-1):
+            for j in range(i+1,len(nums)):
+                if nums[i] + nums[j] == target:
+                    return [i,j]
+        '''
+        #Improved - O(n)
+        nums_map = {}
+        for i,nums1 in enumerate(nums):
+            nums2 = target - nums1
+            if nums2 in nums_map:
+                return [i,nums_map[nums2]]
+            else:
+                nums_map[nums1] = i

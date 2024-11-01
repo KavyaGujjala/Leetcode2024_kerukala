@@ -1,0 +1,25 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        # changing to string
+        '''
+        str_x = str(x)
+        i = 0
+        j = len(str_x)-1
+        while i <= j:
+            if str_x[i] != str_x[j]:
+                return False
+            i += 1
+            j -= 1
+        return True
+        '''
+        # without changing to string
+        if x < 0:
+            return False
+        reversed = 0
+        temp = x
+        while temp != 0:
+            last_digit = temp % 10
+            reversed = reversed * 10 + last_digit
+            temp = temp // 10
+        return reversed == x
+        

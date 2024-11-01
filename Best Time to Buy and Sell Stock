@@ -1,0 +1,23 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        #bruteforce - O(n^2)
+        '''
+        max_profit = 0
+        n = len(prices)
+        for i in range(n):
+            j = i + 1
+            while j < len(prices):
+                if prices[j] > prices[i] and (prices[j] - prices[i]) > max_profit:
+                    max_profit = prices[j] - prices[i]
+                j += 1 
+        return max_profit
+        '''
+        #improved - O(n) - Kadane's Algorithm
+        buy = prices[0]
+        max_profit = 0
+        for i in range(1, len(prices)):
+            if prices[i] < buy:
+                buy = prices[i]
+            elif prices[i] - buy > max_profit:
+                max_profit = prices[i] - buy
+        return max_profit
